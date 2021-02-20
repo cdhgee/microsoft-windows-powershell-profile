@@ -55,13 +55,13 @@ Else {
 Import-Module -Name @("posh-git", "oh-my-posh")
 Set-Theme -name "Paradox"
 
-<#
+
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
-#>
+
 Function Start-ElevatedTerminal {
 
   [CmdletBinding()]
