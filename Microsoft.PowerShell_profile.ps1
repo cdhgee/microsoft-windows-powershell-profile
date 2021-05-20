@@ -44,6 +44,8 @@ $colorMapping = @{
   }
 }
 
+
+
 If ($PSEdition -in $colorMapping.Keys) {
   Set-PSReadLineOption -Colors $colorMapping[$PSEdition]
 }
@@ -55,13 +57,13 @@ Else {
 Import-Module -Name @("posh-git", "oh-my-posh")
 Set-Theme -name "Paradox"
 
-<#
+
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
-#>
+
 Function Start-ElevatedTerminal {
 
   [CmdletBinding()]
@@ -69,4 +71,27 @@ Function Start-ElevatedTerminal {
 
   Start-Process -FilePath wt.exe -Verb RunAs
 
+}
+
+$psReadlineVersion = Get-Module PSReadLine -ListAvailable `
+| Sort-Object -Property Version -Descending `
+| Select-Object -First 1 -ExpandProperty Version
+
+$requiredVersion = New-Object System.Version(2, 2, 0)
+
+If ($psReadlineVersion.CompareTo($requiredVersion) -ge 0) {
+
+  Set-PSReadLineOption -PredictionSource History -PredictionViewStyle ListView -HistorySearchCursorMovesToEnd
+  Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
+  Set-PSReadLineKeyHandler -Chord DownArrow -Function HistorySearchForward
+
+  Set-PSReadLineKeyHandler -Chord Alt+w -BriefDescription SaveInHistory -Description "Save in history but do not execute" -ScriptBlock {
+
+    $line = $null
+    $cursor = $null
+    [Microsoft.PowerShell.PSConsoleReadline]::GetBufferState([ref]$line, [ref]$cursor)
+    [Microsoft.PowerShell.PSConsoleReadline]::AddToHistory($line)
+    [Microsoft.PowerShell.PSConsoleReadline]::RevertLine()
+
+  }
 }
