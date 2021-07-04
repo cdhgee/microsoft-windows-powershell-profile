@@ -81,8 +81,15 @@ $requiredVersion = New-Object System.Version(2, 2, 0)
 
 If ($psReadlineVersion.CompareTo($requiredVersion) -ge 0) {
 
+  $listViewStyle = "ListView"
+  $psHost = Get-Host
+
+  If ($psHost.UI.RawUI.WindowSize.Width -lt 54 -or $psHost.UI.RawUI.WindowSize.Height -lt 15) {
+    $listViewStyle = "InlineView"
+  }
+
   Set-PSReadLineOption -PredictionSource History
-  Set-PSReadlineOption -PredictionViewStyle ListView
+  Set-PSReadlineOption -PredictionViewStyle $listViewStyle
   Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 
   # In Emacs mode - Tab acts like in bash, but the Windows style completion
