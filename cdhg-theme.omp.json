@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "powerline",
+          "foreground": "transparent",
+          "background": "#c386f1",
+          "powerline_symbol": "",
+          "properties": {
+            "display_host": false
+          }
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "transparent",
+          "background": "#61afef",
+          "properties": {
+            "home_icon": "\uF7DB",
+            "folder_icon": "\uF115",
+            "folder_separator_icon": " \uE0B1 "
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "transparent",
+          "background": "#98c379",
+          "properties": {
+            "display_stash_count": true,
+            "display_upstream_icon": true,
+            "status_colors_enabled": true,
+            "local_changes_color": "#e5c07b",
+            "ahead_and_behind_color": "#c678dd",
+            "behind_color": "#abb2bf",
+            "ahead_color": "#c678dd",
+            "stash_count_icon": "\uF692 "
+          }
+        },
+        {
+          "type": "exit",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#ffffff",
+          "background": "#ff8080",
+          "properties": {
+            "prefix": " \uE20F"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#61afef",
+          "properties": {
+            "prefix": "",
+            "text": "\u276F"
+          }
+        }
+      ]
+    }
+  ],
+  "final_space": false
+}
