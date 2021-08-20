@@ -55,7 +55,8 @@ Else {
 
 # Git Powerline stuff
 Import-Module -Name @("posh-git", "oh-my-posh")
-Set-Theme -name "Paradox"
+#Set-Theme -name "Paradox"
+Set-PoshPrompt -Theme "Paradox"
 
 
 # Chocolatey profile
