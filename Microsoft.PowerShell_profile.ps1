@@ -54,9 +54,10 @@ Else {
 }
 
 # Git Powerline stuff
-Import-Module -Name @("posh-git", "oh-my-posh")
-#Set-Theme -name "Paradox"
-Set-PoshPrompt -Theme "Paradox"
+Import-Module -Name "oh-my-posh"
+
+$scriptPath = Split-Path -Path $profile -Parent
+Set-PoshPrompt -Theme "$scriptPath\cdhg-theme.omp.json"
 
 
 # Chocolatey profile
