@@ -7,30 +7,20 @@
       "segments": [
         {
           "type": "session",
-          "style": "powerline",
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "trailing_diamond": "\uE0B0",
           "foreground": "transparent",
           "background": "#c386f1",
-          "powerline_symbol": "",
           "properties": {
             "display_host": false
           }
         },
         {
-          "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "transparent",
-          "background": "#61afef",
-          "properties": {
-            "home_icon": "\uF7DB",
-            "folder_icon": "\uF115",
-            "folder_separator_icon": " \uE0B1 "
-          }
-        },
-        {
           "type": "git",
-          "style": "powerline",
-          "powerline_symbol": "",
+          "style": "diamond",
+          "leading_diamond": "<transparent,#98c379>\uE0B0</>",
+          "trailing_diamond": "\uE0B0",
           "foreground": "transparent",
           "background": "#98c379",
           "properties": {
@@ -46,12 +36,28 @@
         },
         {
           "type": "exit",
-          "style": "powerline",
+          "style": "diamond",
+          "leading_diamond": "<transparent,#e5847b>\uE0B0</>",
+          "trailing_diamond": "\uE0B4",
           "powerline_symbol": "\uE0B0",
-          "foreground": "#ffffff",
-          "background": "#ff8080",
+          "foreground": "transparent",
+          "background": "#e5847b",
           "properties": {
-            "prefix": " \uE20F"
+            "prefix": " \uE20F "
+          }
+        },
+        {
+          "type": "path",
+          "style": "diamond",
+          "leading_diamond": "<transparent,#61afef>\uE0B0</>",
+          "trailing_diamond": "\uE0B4",
+          //"powerline_symbol": "\uE0B0",
+          "foreground": "transparent",
+          "background": "#61afef",
+          "properties": {
+            "home_icon": "\uF7DB",
+            "folder_icon": "\uF115",
+            "folder_separator_icon": " \uE0B1 "
           }
         }
       ]
