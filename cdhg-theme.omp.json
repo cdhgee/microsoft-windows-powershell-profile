@@ -6,6 +6,16 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "root",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#282c34",
+          "background": "#e5c07b",
+          "properties": {
+            "root_icon": "\uF0E7"
+          }
+        },
+        {
           "type": "session",
           "style": "powerline",
           "powerline_symbol": "\uE0B0",
