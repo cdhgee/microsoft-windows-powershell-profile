@@ -44,14 +44,14 @@ $colorMapping = @{
   }
 }
 
+$edition = "Core"
 
+# Only use "Desktop" mappings for Windows PowerShell if on Windows 10 - Windows 11 uses the "Core" mappings
+If ($PSEdition -eq "Desktop" -and [System.Environment]::OSVersion.Version -lt [System.Version]"10.0.22000") {
+  $edition = "Desktop"
+}
 
-If ($PSEdition -in $colorMapping.Keys) {
-  Set-PSReadLineOption -Colors $colorMapping[$PSEdition]
-}
-Else {
-  Write-Error "Unknown PowerShell version '$PSEdition'"
-}
+Set-PSReadLineOption -Colors $colorMapping.$edition
 
 # Git Powerline stuff
 Import-Module -Name "oh-my-posh"
