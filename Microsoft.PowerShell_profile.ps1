@@ -18,46 +18,27 @@ $colors = @{
 }
 
 $colorMapping = @{
-  Core    = @{
-    String             = $colors.Green
-    Command            = $colors.Blue
-    Number             = $colors.Yellow
-    Variable           = $colors.Red
-    Comment            = $colors.DarkGray
-    Operator           = $colors.Magenta
-    ContinuationPrompt = $colors.DarkBlue
-    Default            = $colors.Magenta
-    Parameter          = $colors.White
-    Type               = $colors.Gray
-  }
-  Desktop = @{
-    String             = $colors.Green
-    Command            = $colors.Blue
-    Number             = $colors.Yellow
-    Variable           = $colors.Red
-    Comment            = $colors.DarkGray
-    Operator           = $colors.Magenta
-    ContinuationPrompt = $colors.DarkBlue
-    DefaultToken       = $colors.Magenta
-    Parameter          = $colors.White
-    Type               = $colors.Gray
-  }
+  String             = $colors.Green
+  Command            = $colors.Blue
+  Number             = $colors.Yellow
+  Variable           = $colors.Red
+  Comment            = $colors.DarkGray
+  Operator           = $colors.Magenta
+  ContinuationPrompt = $colors.DarkBlue
+  Default            = $colors.Magenta
+  Parameter          = $colors.White
+  Type               = $colors.Gray
 }
 
-
-
-If ($PSEdition -in $colorMapping.Keys) {
-  Set-PSReadLineOption -Colors $colorMapping[$PSEdition]
-}
-Else {
-  Write-Error "Unknown PowerShell version '$PSEdition'"
-}
+# They finally unified the token names between PowerShell 5 and 7 - YAY!
+Set-PSReadLineOption -Colors $colorMapping
 
 # Git Powerline stuff
 Import-Module -Name "oh-my-posh"
 
+# Using ../PowerShell allows this to work from either PowerShell 7 or Windows PowerShell
 $scriptPath = Split-Path -Path $profile -Parent
-Set-PoshPrompt -Theme "$scriptPath\cdhg-theme.omp.json"
+Set-PoshPrompt -Theme "$scriptPath/../PowerShell/cdhg-theme.omp.json"
 
 
 # Chocolatey profile
