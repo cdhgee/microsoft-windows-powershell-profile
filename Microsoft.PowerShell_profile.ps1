@@ -18,20 +18,40 @@ $colors = @{
 }
 
 $colorMapping = @{
-  String             = $colors.Green
-  Command            = $colors.Blue
-  Number             = $colors.Yellow
-  Variable           = $colors.Red
-  Comment            = $colors.DarkGray
-  Operator           = $colors.Magenta
-  ContinuationPrompt = $colors.DarkBlue
-  Default            = $colors.Magenta
-  Parameter          = $colors.White
-  Type               = $colors.Gray
+  Core    = @{
+    String             = $colors.Green
+    Command            = $colors.Blue
+    Number             = $colors.Yellow
+    Variable           = $colors.Red
+    Comment            = $colors.DarkGray
+    Operator           = $colors.Magenta
+    ContinuationPrompt = $colors.DarkBlue
+    Default            = $colors.Magenta
+    Parameter          = $colors.White
+    Type               = $colors.Gray
+  }
+  Desktop = @{
+    String             = $colors.Green
+    Command            = $colors.Blue
+    Number             = $colors.Yellow
+    Variable           = $colors.Red
+    Comment            = $colors.DarkGray
+    Operator           = $colors.Magenta
+    ContinuationPrompt = $colors.DarkBlue
+    Default            = $colors.Magenta
+    Parameter          = $colors.White
+    Type               = $colors.Gray
+  }
 }
 
-# They finally unified the token names between PowerShell 5 and 7 - YAY!
-Set-PSReadLineOption -Colors $colorMapping
+$edition = $PSEdition
+
+# Only use "Desktop" mappings for Windows PowerShell if on Windows 10 - Windows 11 uses the "Core" mappings
+If ($PSEdition -eq "Desktop" -and [System.Environment]::OSVersion.Version -lt [System.Version]"10.0.22000") {
+  $edition = "Desktop"
+}
+
+Set-PSReadLineOption -Colors $colorMapping.$edition
 
 # Git Powerline stuff
 Import-Module -Name "oh-my-posh"
